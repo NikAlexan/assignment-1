@@ -15,3 +15,26 @@
 ## Запуск тестов
 ```bash
 mvn test
+```
+
+## Примеры запуска cli
+```bash
+# Для сборки пакета
+mvn package
+```
+
+```bash
+java -jar target/assignment1-1.0-SNAPSHOT.jar mergesort 10000 results.csv
+```
+
+```bash
+java -jar target/assignment1-1.0-SNAPSHOT.jar quicksort 10000 results.csv
+```
+
+```bash
+java -jar target/assignment1-1.0-SNAPSHOT.jar select 5000 results.csv
+```
+
+```bash
+java -jar target/assignment1-1.0-SNAPSHOT.jar closest 2000 results.csv
+```
