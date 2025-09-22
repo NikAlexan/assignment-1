@@ -1,6 +1,7 @@
 package com.nikitavassilenko.assignment1.sort;
 
 import com.nikitavassilenko.assignment1.metrics.Metrics;
+import com.nikitavassilenko.assignment1.util.ArrayUtils;
 
 import java.util.Random;
 
@@ -18,9 +19,9 @@ public class QuickSort {
 
             int pivotIndex = left + RAND.nextInt(right - left + 1);
             int pivotValue = a[pivotIndex];
-            swap(a, pivotIndex, right);
+            ArrayUtils.swap(a, pivotIndex, right);
 
-            int partitionIndex = partition(a, left, right, pivotValue, metrics);
+            int partitionIndex = ArrayUtils.partition(a, left, right, pivotValue, metrics);
 
             if (partitionIndex - left < right - partitionIndex) {
                 quicksort(a, left, partitionIndex - 1, metrics);
@@ -30,27 +31,6 @@ public class QuickSort {
             }
 
             metrics.exitRecursion();
-        }
-    }
-
-    private static int partition(int[] a, int left, int right, int pivot, Metrics metrics) {
-        int i = left;
-        for (int j = left; j < right; j++) {
-            metrics.incComparisons();
-            if (a[j] <= pivot) {
-                swap(a, i, j);
-                i++;
-            }
-        }
-        swap(a, i, right);
-        return i;
-    }
-
-    private static void swap(int[] a, int i, int j) {
-        if (i != j) {
-            int tmp = a[i];
-            a[i] = a[j];
-            a[j] = tmp;
         }
     }
 }
