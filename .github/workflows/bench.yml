@@ -1,0 +1,24 @@
+name: Benchmark
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build benchmarks.jar
+        run: mvn clean package -DskipTests
+
+      - name: Run JMH
+        run: java -jar target/benchmarks.jar -f 1 -wi 2 -i 3
