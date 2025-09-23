@@ -1,0 +1,2 @@
+algorithm,n,comparisons,allocations,depth,time
+mergesort,100000,1864265,601360,13,36385557
