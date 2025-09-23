@@ -25,7 +25,7 @@ public class DeterministicSelect {
                 return a[left];
             }
 
-            int pivotIndex = medianOfMedians(a, left, right, metrics);
+            int pivotIndex = medianOfMedians(a, left, right);
             int pivotValue = a[pivotIndex];
             ArrayUtils.swap(a, pivotIndex, right);
 
@@ -44,7 +44,10 @@ public class DeterministicSelect {
         }
     }
 
-    private static int medianOfMedians(int[] a, int left, int right, Metrics metrics) {
+    private static int medianOfMedians(int[] a, int left, int right) {
+        if (ArrayUtils.isNullOrTrivial(a))
+            throw new IllegalArgumentException("Array is null or empty");
+
         int n = right - left + 1;
         if (n <= 5) {
             Arrays.sort(a, left, right + 1);
@@ -60,6 +63,6 @@ public class DeterministicSelect {
             numMedians++;
         }
 
-        return medianOfMedians(a, left, left + numMedians - 1, metrics);
+        return medianOfMedians(a, left, left + numMedians - 1);
     }
 }
