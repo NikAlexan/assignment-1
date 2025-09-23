@@ -1,0 +1,2 @@
+algorithm,n,comparisons,allocations,depth,time
+select,100000,205837,0,1,34042088

@@ -1,0 +1,2 @@
+algorithm,n,comparisons,allocations,depth,time
+quicksort,100000,21106995,0,12,146764850
