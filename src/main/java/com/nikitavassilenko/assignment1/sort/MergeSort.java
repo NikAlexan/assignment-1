@@ -1,17 +1,22 @@
 package com.nikitavassilenko.assignment1.sort;
 
 import com.nikitavassilenko.assignment1.metrics.Metrics;
+import com.nikitavassilenko.assignment1.util.ArrayUtils;
 
 public class MergeSort {
     private static final int CUTOFF = 32;
 
     public static void sort(int[] a, Metrics metrics) {
-        if (a == null || a.length < 2) return;
+        if (ArrayUtils.isNullOrTrivial(a)) return;
+        if (a.length < 2) return;
+
         int[] buffer = new int[a.length];
         sortRecursive(a, buffer, 0, a.length - 1, metrics);
     }
 
     private static void sortRecursive(int[] a, int[] buffer, int left, int right, Metrics metrics) {
+        if (ArrayUtils.isNullOrTrivial(a)) return;
+
         metrics.enterRecursion();
 
         if (right - left + 1 <= CUTOFF) {
@@ -29,6 +34,8 @@ public class MergeSort {
     }
 
     private static void merge(int[] a, int[] buffer, int left, int mid, int right, Metrics metrics) {
+        if (ArrayUtils.isNullOrTrivial(a)) return;
+
         for (int i = left; i <= mid; i++) {
             buffer[i] = a[i];
             metrics.incAllocations();
@@ -51,6 +58,8 @@ public class MergeSort {
     }
 
     private static void insertionSort(int[] a, int left, int right, Metrics metrics) {
+        if (ArrayUtils.isNullOrTrivial(a)) return;
+
         for (int i = left + 1; i <= right; i++) {
             int key = a[i];
             int j = i - 1;

@@ -9,11 +9,15 @@ public class QuickSort {
     private static final Random RAND = new Random();
 
     public static void sort(int[] a, Metrics metrics) {
-        if (a == null || a.length < 2) return;
+        if (ArrayUtils.isNullOrTrivial(a)) return;
+
+        if (a.length < 2) return;
         quicksort(a, 0, a.length - 1, metrics);
     }
 
     private static void quicksort(int[] a, int left, int right, Metrics metrics) {
+        if (ArrayUtils.isNullOrTrivial(a)) return;
+
         while (left < right) {
             metrics.enterRecursion();
 
